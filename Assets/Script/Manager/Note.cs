@@ -11,4 +11,6 @@ public class Note : MonoBehaviour
     {
         transform.localPosition += Vector3.right * noteSpeed * Time.deltaTime;        
     }
+
+
 }
