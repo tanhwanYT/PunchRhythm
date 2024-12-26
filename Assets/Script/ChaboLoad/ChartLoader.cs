@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChartLoader : MonoBehaviour
 {
-    public string fileName = "test1"; 
+    public string fileName = "test2"; 
     private string chartData;
 
     private void Awake()

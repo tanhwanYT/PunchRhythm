@@ -20,6 +20,6 @@ public class NoteSpawner : MonoBehaviour
         Transform laneTransform = lanes[note.lane]; 
         GameObject noteObject = Instantiate(notePrefab, laneTransform);
         float spawnY = note.time * scrollSpeed; 
-        noteObject.transform.localPosition = new Vector3(0, spawnY, 0);
+        noteObject.transform.localPosition = new Vector3(0, spawnY, 0.5f);
     }
 }
