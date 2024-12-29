@@ -17,9 +17,17 @@ public class NoteSpawner : MonoBehaviour
 
     private void SpawnNote(NoteLoader.Note note)
     {
-        Transform laneTransform = lanes[note.lane]; 
+        Transform laneTransform = lanes[note.lane];
         GameObject noteObject = Instantiate(notePrefab, laneTransform);
-        float spawnY = note.time * scrollSpeed; 
-        noteObject.transform.localPosition = new Vector3(0, spawnY, 0.5f);
+        float spawnY = note.time * scrollSpeed;
+        noteObject.transform.localPosition = new Vector3(0, spawnY, 0);
+
+        // NoteMovement의 scrollSpeed 설정
+        NoteMovement movementScript = noteObject.GetComponent<NoteMovement>();
+        if (movementScript != null)
+        {
+            movementScript.scrollSpeed = scrollSpeed; // 게임 매니저의 scrollSpeed 값 전달
+        }
     }
+
 }

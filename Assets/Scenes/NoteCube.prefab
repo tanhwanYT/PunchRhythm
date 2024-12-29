@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1229994959131141288}
   - component: {fileID: 7949570506642811897}
   - component: {fileID: 6533885785729791035}
+  - component: {fileID: 575873039369192513}
   m_Layer: 0
   m_Name: NoteCube
   m_TagString: Untagged
@@ -127,9 +128,22 @@ Rigidbody:
     serializedVersion: 2
     m_Bits: 0
   m_ImplicitCom: 1
-  m_ImplicitTensor: 1
+  m_ImplicitTensor: 0
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &575873039369192513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467110381558463646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87456e1f9de9c3a4da5942cc24720963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 5
