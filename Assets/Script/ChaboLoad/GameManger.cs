@@ -2,16 +2,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public ChartLoader chartLoader;
     public NoteLoader noteLoader;
+    public TextAsset chartDataFile;
 
     private void Start()
     {
-        string chartData = chartLoader.GetChartData();
-
-        if (!string.IsNullOrEmpty(chartData))
+        if (chartDataFile != null)
         {
+            Debug.Log("Chart data file found.");
+            string chartData = chartDataFile.text;
             noteLoader.LoadChart(chartData);
+        }
+        else
+        {
+            Debug.LogError("Chart data file is not assigned!");
         }
     }
 }
