@@ -2,36 +2,26 @@ using UnityEngine;
 
 public class NoteMover : MonoBehaviour
 {
-    private float scrollSpeed;
-    private Vector3 targetPosition;
+    private Vector3 targetPosition; // 이동할 목표 위치
+    private float spawnTime; // 노트가 스폰된 시간
+    private float speed; // 이동 속도
 
-    public void Initialize(float speed, int lane)
+    public void SetTarget(Vector3 target, float time, float speed)
     {
-        scrollSpeed = speed;
-
-        if (lane == 0) // 왼쪽 레인
-        {
-            targetPosition = new Vector3(-2f, -5f, 0f);
-        }
-        else if (lane == 1) // 중간 카운터 레인
-        {
-            targetPosition = new Vector3(0f, -5f, 0f);
-        }
-        else if (lane == 2) // 오른쪽 레인
-        {
-            targetPosition = new Vector3(2f, -5f, 0f);
-        }
+        targetPosition = target;
+        spawnTime = time;
+        this.speed = speed;
     }
 
     private void Update()
     {
-        // 노트를 targetPosition으로 이동
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, scrollSpeed * Time.deltaTime);
+        float step = speed * Time.deltaTime; // 한 프레임당 이동 거리
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
 
-        // 목표 위치에 도달하면 제거
-        if (transform.position == targetPosition)
+        // 목표 위치에 도달했을 경우
+        if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
-            Destroy(gameObject);
+            Destroy(gameObject); // 노트 삭제
         }
     }
 }
