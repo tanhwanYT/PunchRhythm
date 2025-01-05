@@ -3,8 +3,10 @@ using UnityEngine;
 public class NoteMover : MonoBehaviour
 {
     private Vector3 targetPosition; // 이동할 목표 위치
-    private float spawnTime; // 노트가 스폰된 시간
+    public float spawnTime; // 노트가 스폰된 시간
     private float speed; // 이동 속도
+    public bool inJudgeZone = false;
+
 
     public void SetTarget(Vector3 target, float time, float speed)
     {
@@ -22,6 +24,22 @@ public class NoteMover : MonoBehaviour
         if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
         {
             Destroy(gameObject); // 노트 삭제
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("JudgeZone"))
+        {
+            inJudgeZone = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("JudgeZone"))
+        {
+            inJudgeZone = false;
         }
     }
 }

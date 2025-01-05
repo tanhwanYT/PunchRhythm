@@ -18,7 +18,13 @@ public class NoteSpawner : MonoBehaviour
         }
 
         // 노트 생성
-        GameObject noteObject = Instantiate(notePrefab, laneStartPoints[lane].position, Quaternion.identity);
+        GameObject noteObject = Instantiate(notePrefab);
+
+        // 노트 위치를 worldPosition으로 설정
+        noteObject.transform.position = laneStartPoints[lane].position;
+
+        // 노트를 레인의 자식으로 설정
+        noteObject.transform.SetParent(laneStartPoints[lane].parent);
 
         // 노트 이동 설정
         NoteMover mover = noteObject.GetComponent<NoteMover>();
