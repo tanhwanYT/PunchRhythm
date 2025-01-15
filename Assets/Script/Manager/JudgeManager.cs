@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class JudgeManager : MonoBehaviour
@@ -10,9 +11,9 @@ public class JudgeManager : MonoBehaviour
     public Transform centerLane;
     public Transform rightLane;
 
-    public float perfectWindow = 0.1f;
-    public float greatWindow = 0.2f;
-    public float goodWindow = 0.3f;
+    public float perfectWindow = 1.0f;
+    public float greatWindow = 2.0f;
+    public float goodWindow = 3.0f;
 
     private void Update()
     {
@@ -32,22 +33,36 @@ public class JudgeManager : MonoBehaviour
         {
             // 레인의 끝 위치 (endPos)
             Transform endPos = lane.GetChild(0);  // 레인의 첫 번째 자식이 endPos로 가정
+            Debug.Log("EndPos position: " + endPos.position);
+            Debug.Log("clossesNote position: " + closestNote.transform.position);
 
             // 노트와 끝 지점 간의 거리 계산
-            float distance = Mathf.Abs(closestNote.transform.position.y - endPos.position.y);
+            float distance = Vector3.Distance(closestNote.transform.position, endPos.position);
 
-            // 거리 차이에 따른 판정
-            if (distance <= perfectWindow)
-                Debug.Log("Perfect!");
-            else if (distance <= greatWindow)
-                Debug.Log("Great!");
-            else if (distance <= goodWindow)
-                Debug.Log("Good!");
+
+            if(distance >= perfectWindow)
+            {
+                Debug.Log("Perfect! = " + distance);
+            }
+            else if (distance >= greatWindow)
+            {
+                Debug.Log("Great! = " + distance);
+            }
+            else if (distance >= goodWindow)
+            {
+                Debug.Log("Ok! = " + distance);
+            }
             else
-                Debug.Log("Miss!");
+            {
+                Debug.Log("Bad! = " + distance);
+            }
 
             // 노트 제거
             Destroy(closestNote.gameObject);
+        }
+        else
+        {
+            Debug.Log("뭔가이상!");
         }
     }
 
@@ -63,10 +78,12 @@ public class JudgeManager : MonoBehaviour
         foreach (Transform child in lane)
         {
             NoteMover note = child.GetComponent<NoteMover>();
-            if (note != null && note.inJudgeZone) // 판정 가능한 상태인지 확인
+            if (note != null) // 판정 가능한 상태인지 확인
             {
                 // 노트와 endPos의 y 위치 차이로 거리를 계산
-                float distance = Mathf.Abs(note.transform.position.y - endPos.position.y);
+                float distance = Vector3.Distance(note.transform.position, endPos.position);
+                Debug.Log("Distance at Key Press: " + distance);
+
                 if (distance < closestDistance)
                 {
                     closestDistance = distance;
@@ -74,7 +91,6 @@ public class JudgeManager : MonoBehaviour
                 }
             }
         }
-
         return closestNote; // 가장 가까운 노트를 반환
     }
 }

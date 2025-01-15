@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Note
   - Outline
+  - JudgeZone
   layers:
   - Default
   - TransparentFX
