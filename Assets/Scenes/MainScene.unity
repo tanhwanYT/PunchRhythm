@@ -1614,6 +1614,8 @@ MonoBehaviour:
   leftLane: {fileID: 1594559402}
   centerLane: {fileID: 1364483975}
   rightLane: {fileID: 1785795830}
+  hitEffectPrefab: {fileID: 608598122660979965, guid: dfff07e5d797de34a8377a15a217c0f0,
+    type: 3}
   perfectWindow: 0.1
   greatWindow: 0.2
   goodWindow: 0.3

@@ -11,6 +11,7 @@ public class JudgeManager : MonoBehaviour
     public Transform centerLane;
     public Transform rightLane;
 
+    public GameObject hitEffectPrefab;
     public float perfectWindow = 1.0f;
     public float greatWindow = 2.0f;
     public float goodWindow = 3.0f;
@@ -43,18 +44,22 @@ public class JudgeManager : MonoBehaviour
             if(distance >= perfectWindow)
             {
                 Debug.Log("Perfect! = " + distance);
+                SpawnHitEffect(endPos.position, Color.yellow);
             }
             else if (distance >= greatWindow)
             {
                 Debug.Log("Great! = " + distance);
+                SpawnHitEffect(endPos.position, Color.green);
             }
             else if (distance >= goodWindow)
             {
                 Debug.Log("Ok! = " + distance);
+                SpawnHitEffect(endPos.position, Color.blue);
             }
             else
             {
                 Debug.Log("Bad! = " + distance);
+                SpawnHitEffect(endPos.position, Color.gray);
             }
 
             // 노트 제거
@@ -93,4 +98,26 @@ public class JudgeManager : MonoBehaviour
         }
         return closestNote; // 가장 가까운 노트를 반환
     }
+
+    private void SpawnHitEffect(Vector3 position, Color color)
+    {
+        if (hitEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(hitEffectPrefab, position, Quaternion.identity);
+            ParticleSystem ps = effect.GetComponent<ParticleSystem>();
+            
+            if (ps != null)
+            {
+                var main = ps.main;
+                main.startColor = color; // 이펙트 색상 변경
+            }
+
+            Destroy(effect, 1.0f); // 1초 후 이펙트 제거
+        }
+        else
+        {
+            Debug.LogWarning("HitEffectPrefab is not assigned!");
+        }
+    }
+
 }
