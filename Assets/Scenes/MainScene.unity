@@ -334,7 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteLoader: {fileID: 1637941735}
-  chartDataFile: {fileID: 4900000, guid: a68523f6d3c748342b8492421b0834f8, type: 3}
+  chartDataFile: {fileID: 4900000, guid: 5e039574606efdc48a1a9d56c18dd6ed, type: 3}
   noteSpawner: {fileID: 2040702851}
 --- !u!4 &425977000
 Transform:
@@ -1886,7 +1886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6295e0fa16a740b4c8ae4c4294e5f0b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: game test1
+  fileName: walp
   chartLines: []
 --- !u!4 &2080230060
 Transform:

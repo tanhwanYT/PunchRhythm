@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ChartLoader : MonoBehaviour
 {
-    public string fileName = "game test1"; // Resources 폴더에 있는 파일 이름
+    public string fileName = "walp"; // Resources 폴더에 있는 파일 이름
     private string chartData;         // 전체 채보 데이터
     public List<string> chartLines;   // 줄 단위로 나눈 채보 데이터
 

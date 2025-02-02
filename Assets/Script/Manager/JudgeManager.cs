@@ -41,17 +41,17 @@ public class JudgeManager : MonoBehaviour
             float distance = Vector3.Distance(closestNote.transform.position, endPos.position);
 
 
-            if(distance >= perfectWindow)
+            if(distance <= perfectWindow)
             {
                 Debug.Log("Perfect! = " + distance);
                 SpawnHitEffect(endPos.position, Color.yellow);
             }
-            else if (distance >= greatWindow)
+            else if (distance <= greatWindow)
             {
                 Debug.Log("Great! = " + distance);
                 SpawnHitEffect(endPos.position, Color.green);
             }
-            else if (distance >= goodWindow)
+            else if (distance <= goodWindow)
             {
                 Debug.Log("Ok! = " + distance);
                 SpawnHitEffect(endPos.position, Color.blue);
