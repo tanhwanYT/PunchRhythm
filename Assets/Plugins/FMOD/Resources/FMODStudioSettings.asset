@@ -161,8 +161,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: "C:/Users/qkrxo/OneDrive/\uBB38\uC11C/FMOD Studio/PunchRhythm/PunchRhythm.fspro"
-  sourceBankPath: "C:/Users/qkrxo/OneDrive/\uBB38\uC11C/FMOD Studio/PunchRhythm/Build"
+  sourceProjectPath: "C:/Users/qkrxo/OneDrive/\uBB38\uC11C/FMOD Studio/walpunight/walpunight.fspro"
+  sourceBankPath: "C:/Users/qkrxo/OneDrive/\uBB38\uC11C/FMOD Studio/walpunight/Build"
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
