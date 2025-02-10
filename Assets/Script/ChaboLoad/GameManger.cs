@@ -20,15 +20,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("Chart data file is not assigned!");
         }
 
-        foreach (var note in noteLoader.notes)
-        {
-            StartCoroutine(SpawnNoteWithDelay(note));
-        }
+        noteSpawner.InitializeSpawner(noteLoader.notes, noteLoader.bpm);
     }
     
-    private IEnumerator SpawnNoteWithDelay(NoteLoader.Note note)
-    {
-        yield return new WaitForSeconds(note.time); // 노트 시간에 맞게 대기
-        noteSpawner.SpawnNote(note.lane, note.time);
-    }
 }

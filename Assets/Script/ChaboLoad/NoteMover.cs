@@ -2,28 +2,30 @@ using UnityEngine;
 
 public class NoteMover : MonoBehaviour
 {
-    private Vector3 targetPosition; // 이동할 목표 위치
-    public float spawnTime; // 노트가 스폰된 시간
-    private float speed; // 이동 속도
     public bool inJudgeZone = false;
-
-
-    public void SetTarget(Vector3 target, float time, float speed)
+    public float moveSpeed; // 이동 속도
+    private Vector3 targetPosition;
+    private float startTime;
+    public void SetTarget(Vector3 target, float noteTime, float speed)
     {
         targetPosition = target;
-        spawnTime = time;
-        this.speed = speed;
+        float journeyLength = Vector3.Distance(transform.position, targetPosition);
+        moveSpeed = journeyLength / speed; // 계산된 속도 적용
+        startTime = Time.time; // 시작 시간을 설정
     }
 
-    private void Update()
+    void Update()
     {
-        float step = speed * Time.deltaTime; // 한 프레임당 이동 거리
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
+        float distanceCovered = (Time.time - startTime) * moveSpeed;
+        float fractionOfJourney = distanceCovered / Vector3.Distance(transform.position, targetPosition);
 
-        // 목표 위치에 도달했을 경우
-        if (Vector3.Distance(transform.position, targetPosition) < 0.1f)
+        // 노트 이동 (선형 보간)
+        transform.position = Vector3.Lerp(transform.position, targetPosition, fractionOfJourney);
+
+        // 목표 지점에 도달하면 이동 멈추기
+        if (fractionOfJourney >= 1f)
         {
-            Destroy(gameObject); // 노트 삭제
+            Destroy(gameObject);
         }
     }
 
