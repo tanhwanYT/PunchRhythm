@@ -7,6 +7,6 @@ public class StartSceneScript : MonoBehaviour
 {
     public void SceneChange()
     {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene("SongSelectScene");
     }
 }
