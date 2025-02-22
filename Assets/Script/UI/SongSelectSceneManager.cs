@@ -11,6 +11,7 @@ public class SongSelectSceneManage : MonoBehaviour
 
     private float targetY; // 목표 위치
     private float velocity = 0f; // Lerp 보간 속도
+    private int selectedIndex = 0;
 
     [System.Serializable]
     public class SongData
@@ -21,6 +22,7 @@ public class SongSelectSceneManage : MonoBehaviour
     }
 
     public List<SongData> songList = new List<SongData>(); // 곡 목록
+    private List<SongItem> songItems = new List<SongItem>(); // SongItem의 목록
 
     void Start()
     {
@@ -33,6 +35,8 @@ public class SongSelectSceneManage : MonoBehaviour
         // Up/Down 키로 이동
         if (Input.GetKeyDown(KeyCode.UpArrow)) MoveUp();
         if (Input.GetKeyDown(KeyCode.DownArrow)) MoveDown();
+        if (Input.GetKeyDown(KeyCode.KeypadEnter)) SelectSong();
+
 
         // 부드러운 이동 (Lerp 사용)
         float newY = Mathf.SmoothDamp(content.anchoredPosition.y, targetY, ref velocity, smoothTime);
@@ -49,13 +53,22 @@ public class SongSelectSceneManage : MonoBehaviour
         }
     }
 
+    public void SelectSong()
+    {
+
+    }
+
     public void MoveUp()
     {
+        selectedIndex = Mathf.Max(0, selectedIndex - 1);
         targetY -= moveStep; // 위로 이동
     }
 
     public void MoveDown()
     {
+        selectedIndex = Mathf.Min(songList.Count - 1, selectedIndex + 1);
         targetY += moveStep; // 아래로 이동
     }
+
+
 }
