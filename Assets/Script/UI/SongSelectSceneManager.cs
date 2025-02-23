@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class SongSelectSceneManage : MonoBehaviour
 {
@@ -22,7 +23,6 @@ public class SongSelectSceneManage : MonoBehaviour
     }
 
     public List<SongData> songList = new List<SongData>(); // 곡 목록
-    private List<SongItem> songItems = new List<SongItem>(); // SongItem의 목록
 
     void Start()
     {
@@ -35,7 +35,7 @@ public class SongSelectSceneManage : MonoBehaviour
         // Up/Down 키로 이동
         if (Input.GetKeyDown(KeyCode.UpArrow)) MoveUp();
         if (Input.GetKeyDown(KeyCode.DownArrow)) MoveDown();
-        if (Input.GetKeyDown(KeyCode.KeypadEnter)) SelectSong();
+        if(Input.GetKeyDown(KeyCode.Space)) SelectSong();
 
 
         // 부드러운 이동 (Lerp 사용)
@@ -55,7 +55,7 @@ public class SongSelectSceneManage : MonoBehaviour
 
     public void SelectSong()
     {
-
+        SceneManager.LoadScene("MainScene");
     }
 
     public void MoveUp()

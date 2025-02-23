@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class JudgeManager : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class JudgeManager : MonoBehaviour
             JudgeLane(centerLane);
         if (Input.GetKeyDown(rightKey))
             JudgeLane(rightLane);
+        if (Input.GetKeyDown(KeyCode.Escape))
+            SceneManager.LoadScene("SongSelectScene");
     }
 
     private void JudgeLane(Transform lane)
