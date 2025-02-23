@@ -191,7 +191,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -517,15 +517,12 @@ MonoBehaviour:
   moveStep: 150
   smoothTime: 0.1
   songList:
-  - title: Walpurgis Night
+  - title: XOMU - Walpurgis Night
     albumArt: {fileID: 0}
     filePath: event:/Xomu - Walpurgis Night [ ezmp3.cc ]
-  - title: Now Reboot Go
+  - title: God Chang Sub - Normalization of reboot
     albumArt: {fileID: 0}
     filePath: event:/GodChangSub
-  - title: Take a Chance
-    albumArt: {fileID: 0}
-    filePath: song
 --- !u!4 &1221251941
 Transform:
   m_ObjectHideFlags: 0

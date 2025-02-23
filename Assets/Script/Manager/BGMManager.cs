@@ -10,6 +10,7 @@ public class BGMManager : MonoBehaviour
     public static BGMManager Instance;  // 싱글톤
 
     private EventInstance mainBGM;  // 메인 배경음악
+    private EventInstance gameBGM;
 
 
     void Awake()
@@ -47,10 +48,14 @@ public class BGMManager : MonoBehaviour
         if (scene.name == "MainScene") // 게임씬 진입 시
         {
             mainBGM.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);  // 메인 BGM 종료
+            gameBGM = RuntimeManager.CreateInstance("event:/GodChangSub");
+            gameBGM.set3DAttributes(RuntimeUtils.To3DAttributes(Camera.main.transform));
+            gameBGM.start();
 
         }
         else if (scene.name == "StartScene" || scene.name == "SongSelectScene")
         {
+            gameBGM.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);  // 메인 BGM 종료
             if (!mainBGM.isValid())
             {
                 mainBGM = RuntimeManager.CreateInstance("event:/MainMusic");

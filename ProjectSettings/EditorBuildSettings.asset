@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/StartScene.unity
     guid: 2a06b747632992146a3d76dfac35ef1f
   - enabled: 1
-    path: Assets/Scenes/MainScene.unity
-    guid: a780872fd027aa7449e4d920ea5f231a
-  - enabled: 1
     path: Assets/Scenes/SongSelectScene.unity
     guid: 610a42fd58569594e8ffff2da9b06901
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: a780872fd027aa7449e4d920ea5f231a
   m_configObjects: {}
